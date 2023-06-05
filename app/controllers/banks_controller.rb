@@ -21,7 +21,7 @@ class BanksController < ApplicationController
 
         # Replace the existing bank account for the existing customer
         else
-          customer = Stripe::Customer.retrieve(session[:customer], expand: ["sources"])
+          customer = Stripe::Customer.retrieve(id: session[:customer], expand: ["sources"])
           customer.source = token
           customer.save
         end
